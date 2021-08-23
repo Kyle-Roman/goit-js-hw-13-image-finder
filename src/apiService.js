@@ -1,5 +1,6 @@
 const BASE_URL = "https://pixabay.com/api/";
 const pixabayKey = "22969776-9de8346515d89d44141e5bd5e";
+// const query = '';
 
 const imageFile = {
     "comments": 78,
@@ -18,13 +19,16 @@ const options = {
     // body: JSON.stringify(imageFile),
 }
 
-let defaultPage = 1;
-const currentPage = defaultPage + 1;
 
-function fetchImages(query) {
-    return fetch(`${BASE_URL}?image_type = photo & orientation=horizontal & q=${query} & page=${defaultPage} & per_page=12 & key=${pixabayKey}`, options)
+function fetchImages() {
+    let defaultPage = 1;
+
+    return fetch(`${BASE_URL}?image_type=photo&orientation=horizontal&q=${this.query}&page=${defaultPage}&per_page=12&key=${pixabayKey}`)
         .then(res => res.json())
-        .then(console.log);
+        .then(images => {
+            defaultPage += 1;
+            return images.hits;
+        })
 }
 
 

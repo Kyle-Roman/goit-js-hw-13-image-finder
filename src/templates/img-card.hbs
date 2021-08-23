@@ -1,22 +1,24 @@
-<div class="photo-card">
-    <img src="{{0.webformatURL}}" alt="{{0.tags}}" />
+{{#each this}}
+<li>
+    <div class='photo-card'>
+        <div class="photo-wrapper">
+            <img src='{{webformatURL}}' alt='{{tags}}' />
+        </div>
+        <div class='stats'>
+            <p class='stats-item'>{{likes}}
+                <i class='material-icons md-light'>thumb_up</i>
 
-    <div class="stats">
-        <p class="stats-item">
-            <i class="material-icons">thumb_up</i>
-            1108
-        </p>
-        <p class="stats-item">
-            <i class="material-icons">visibility</i>
-            320321
-        </p>
-        <p class="stats-item">
-            <i class="material-icons">comment</i>
-            129
-        </p>
-        <p class="stats-item">
-            <i class="material-icons">cloud_download</i>
-            176019
-        </p>
+            </p>
+            <p class='stats-item'>{{views}}
+                <i class='material-icons md-light'>visibility</i>
+            </p>
+            <p class='stats-item'>{{comments}}
+                <i class='material-icons md-light'>comment</i>
+            </p>
+            <p class='stats-item'>{{downloads}}
+                <i class='material-icons md-light'>cloud_download</i>
+            </p>
+        </div>
     </div>
-</div>
+</li>
+{{/each}}

@@ -1,0 +1,36 @@
+.gallery{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.stats{
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.stats-item{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+    color: rgba(35, 114, 48, 1);
+    
+    &:not(:last-child){
+        margin-right: 8px;
+    }
+    
+}
+
+.material-icons.md-light { 
+    color: rgb(35, 114, 48, 1); }
+
+.material-icons.md-light.md-inactive { 
+    color: rgba(255, 255, 255, 0.3); }
+

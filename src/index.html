@@ -9,15 +9,22 @@
     integrity="sha512-ISS7cAi1PEhQ8jnbJpJZMd29NlhNj4AWYyLOSp2CE/CsHxTCu+r+t0D2yoJudVrd0/8fTVPUVDzY5Tvli75u/g=="
     crossorigin="anonymous" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&family=Roboto:wght@400;500;700;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./sass/main.scss">
 </head>
 
 <body>
-  <form class="search-form" id="search-form">
-    <input type="text" name="query" autocomplete="off" placeholder="Search images..." />
-  </form>
+  <div class="form-wrapper">
+    <form class="search-form" id="search-form">
+      <input type="text" name="query" autocomplete="off" placeholder="Search images..." id="input">
+      <button type="submit" class="load-btn btn">Search!</button>
+    </form>
+  </div>
 
-  <ul class="gallery"></ul>
-  <button type="button" class="moreBtn">Загрузить еще...</button>
+  <ul class="gallery list"></ul>
+  <button type="button" class="more-btn btn">Load more...</button>
   <script src="./index.js"></script>
 </body>
 

@@ -5,25 +5,25 @@ import _ from 'lodash';
 
 const refs = getRefs();
 
-const debouncedCreateGallery = _.debounce(createGallery, 500);
-
-refs.searchForm.addEventListener('keydown', debouncedCreateGallery);
+refs.searchForm.addEventListener('submit', createGallery);
+refs.moreBtn.classList.add("visually-hidden");
+refs.moreBtn.addEventListener('click', createGalleryMarkup)
 
 function createGallery(e) {
     e.preventDefault();
     galleryReset();
 
-    const search = e.target.value.trim();
-    let query = refs.searchForm.value;
+    API.query = refs.input.value.trim();
 
-    if (search > 0) {
-        API.fetchImages(query)
-            .then(createGalleryMarkup)
-            .catch(onError);
+    if (API.query === '') {
+        const error = onError();
+        return error;
     }
+
+    API.fetchImages().then(createGalleryMarkup);
 }
 
-function onError(error) {
+function onError() {
     alert({
         type: 'error',
         text: 'Nothing found!',
@@ -33,23 +33,10 @@ function onError(error) {
 };
 
 function createGalleryMarkup(images) {
-    // refs.gallery.insertAdjacentHTML("beforeend", imgCardTmp(images));
-    renderImgList(images);
+    refs.gallery.insertAdjacentHTML("beforeend", imgCardTmp(images));
+    refs.moreBtn.classList.remove("visually-hidden");
 }
 
-function renderImgList(images) {
-    const searchedImages = images.map(image => {
-        const galleryItem = document.createElement('li');
-        galleryItem.textContent = `${imgCardTmp}`;
-        return galleryItem;
-    });
-    gallery.append(...searchedImages);
-};
-
-
-function pageNr() {
-    defaultPage += 1;
-}
 
 function galleryReset() {
     refs.searchForm.textContent = '';
