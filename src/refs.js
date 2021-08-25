@@ -4,5 +4,7 @@ export default function getRefs() {
         gallery: document.querySelector('.gallery'),
         moreBtn: document.querySelector('.more-btn'),
         input: document.getElementById('input'),
+        againBtn: document.getElementById('again'),
+        img: document.querySelector('.img'),
     }
 }
