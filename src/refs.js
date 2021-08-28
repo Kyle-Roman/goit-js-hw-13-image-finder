@@ -5,6 +5,6 @@ export default function getRefs() {
         moreBtn: document.querySelector('.more-btn'),
         input: document.getElementById('input'),
         againBtn: document.getElementById('again'),
-        img: document.querySelector('.img'),
+        img: document.querySelectorAll('.img'),
     }
 }

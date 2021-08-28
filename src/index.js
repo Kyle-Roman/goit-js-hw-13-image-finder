@@ -21,7 +21,7 @@ refs.moreBtn.classList.add("visually-hidden");
 refs.againBtn.classList.add("visually-hidden");
 refs.moreBtn.addEventListener('click', createMoreGalleryMarkup);
 refs.againBtn.addEventListener('click', galleryReset);
-// refs.img.addEventListener('click', modalBox);
+refs.img.addEventListener('click', modalBox);
 
 
 function createGallery(e) {
@@ -92,6 +92,6 @@ function pageReset() {
     API.defaultPage = 1;
 }
 
-// function modalBox(images) {
-//     instance.show(images);
-// }
+function modalBox(images) {
+    instance.show(images);
+}
