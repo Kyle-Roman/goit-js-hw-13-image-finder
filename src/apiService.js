@@ -8,7 +8,6 @@ async function fetchImages() {
     const imagesSet = await serverResponse.json();
     const imageArr = imagesSet.hits;
     this.defaultPage += 1;
-    console.log(imagesSet.hits);
     return imageArr;
 }
 

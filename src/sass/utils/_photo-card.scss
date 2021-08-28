@@ -15,4 +15,23 @@
     height: 180px;
     padding-bottom: 10px;
     background-size: contain;
+    border: none;
+}
+
+.hidden{
+    display: none;
+}
+
+.card-box{
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 80vw;
+    height: 80vh;
+    border: 10px solid rgb(49, 75, 2);
+    border-radius: 5px;
+}
+
+.photo{
+    outline: none;
 }

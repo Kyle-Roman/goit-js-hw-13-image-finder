@@ -9,19 +9,11 @@ import * as basicLightbox from 'basiclightbox'
 
 const refs = getRefs();
 
-// const instance = basicLightbox.create(`
-//     <div class='card-box'>
-//         <img src='${largeImageURL}' alt='${tags}' />
-//     </div>
-// `);
-
-
 refs.searchForm.addEventListener('submit', createGallery);
 refs.moreBtn.classList.add("visually-hidden");
 refs.againBtn.classList.add("visually-hidden");
 refs.moreBtn.addEventListener('click', createMoreGalleryMarkup);
 refs.againBtn.addEventListener('click', galleryReset);
-refs.img.addEventListener('click', modalBox);
 
 
 function createGallery(e) {
@@ -46,10 +38,12 @@ function createGalleryMarkup(imageArr) {
     renderMarkup(imageArr);
     refs.moreBtn.classList.remove("visually-hidden");
     refs.againBtn.classList.remove("visually-hidden");
+
     refs.moreBtn.scrollIntoView({
         behavior: 'smooth',
         block: 'end'
     });
+
 };
 
 function createMoreGalleryMarkup() {
@@ -58,7 +52,19 @@ function createMoreGalleryMarkup() {
 
 function renderMarkup(images) {
     refs.gallery.insertAdjacentHTML("beforeend", imgCardTmp(images));
+
+    document.getElementById("gallery").addEventListener("click", function (e) {
+        if (e.target && e.target.id == "img") {
+            const modal = basicLightbox.create(`<div class='card-box'>
+                <img src = ${e.target.dataset.large} id="openedImg">
+                </div>`).show();
+            document.getElementById('openedImg').addEventListener('click', function (e) {
+                modal.close();
+            });
+        }
+    });
 };
+
 
 function galleryReset() {
     refs.gallery.textContent = '';
@@ -92,6 +98,3 @@ function pageReset() {
     API.defaultPage = 1;
 }
 
-function modalBox(images) {
-    instance.show(images);
-}
