@@ -1,3 +1,6 @@
+import * as basicLightbox from 'basiclightbox';
+import '../node_modules/basiclightbox/dist/basicLightbox.min.css';
+
 import API from './apiService';
 import imgCardTmp from './templates/img-card.hbs';
 import modalCard from './templates/modal-card.hbs';
@@ -5,7 +8,7 @@ import getRefs from './refs';
 import _ from 'lodash';
 import '@pnotify/core/dist/BrightTheme.css';
 import { alert, notice } from '@pnotify/core';
-import * as basicLightbox from 'basiclightbox'
+
 
 const refs = getRefs();
 
@@ -53,15 +56,11 @@ function createMoreGalleryMarkup() {
 function renderMarkup(images) {
     refs.gallery.insertAdjacentHTML("beforeend", imgCardTmp(images));
 
-    document.getElementById("gallery").addEventListener("click", function (e) {
-        if (e.target && e.target.id == "img") {
-            const modal = basicLightbox.create(`<div class='card-box'>
-                <img src = ${e.target.dataset.large} id="openedImg">
-                </div>`).show();
-            document.getElementById('openedImg').addEventListener('click', function (e) {
-                modal.close();
-            });
+    refs.gallery.addEventListener('click', e => {
+        if (e.target.tagName !== 'IMG') {
+            return;
         }
+        const modal = basicLightbox.create(`<img src = ${e.target.dataset.large} id="openedImg" />`).show();
     });
 };
 
